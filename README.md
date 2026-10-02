@@ -2,9 +2,9 @@
 
 Put a picture in your note without leaving it. Run **Generate image into this note**, describe what you
 want, and the image is saved to your vault and embedded at the cursor. Right-click any image in your
-vault and choose **Edit with Kavel** to change it with one sentence.
+vault and choose **Edit with Kavel** to change it with one sentence (editing needs an API key).
 
-**No API key needed to start** — powered by [Kavel](https://www.kavel.ai/?utm_source=obsidian&utm_medium=plugin).
+**No API key needed to generate** — powered by [Kavel](https://www.kavel.ai/?utm_source=obsidian&utm_medium=plugin).
 
 ## What you can do
 
@@ -17,7 +17,7 @@ vault and choose **Edit with Kavel** to change it with one sentence.
 ## Free tier, then your account
 
 With the API key field empty the plugin runs on Kavel's free tier: no account, 1K output with a
-watermark, a few images a day. Paste a key from
+watermark, about two new images a day. Editing is not on the free tier. Paste a key from
 [kavel.ai/settings/apikeys](https://www.kavel.ai/settings/apikeys?utm_source=obsidian&utm_medium=plugin) into **Settings → Kavel** and every
 run uses your account instead — your credits, no daily ceiling, no watermark on a paid plan, and the model
 of your choice:

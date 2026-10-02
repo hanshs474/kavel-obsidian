@@ -30,7 +30,9 @@ async function call(method, url, { json, body, contentType, headers = {} } = {})
 function parseSubmit(env) {
   if (env.code !== 0) throw new Error(env.message || 'request refused');
   const d = env.data || {};
-  if (d.wall) throw new Error('Free Kavel allowance used up for today. Add an API key in Settings → Kavel to keep going.');
+  if (d.wall) throw new Error(d.reason === 'anon_ip_daily'
+    ? 'Free Kavel allowance used up for today. Add an API key in Settings → Kavel to keep going.'
+    : 'This run costs more than the free allowance. Add an API key in Settings → Kavel to run it.');
   if (!d.id) throw new Error('Kavel returned no task id');
   return String(d.id);
 }
@@ -165,6 +167,12 @@ module.exports = class KavelPlugin extends Plugin {
   }
 
   edit(file) {
+    // An edit costs more than the free allowance, so without a key it can only
+    // wall. Say so before uploading the user's image rather than after.
+    if (!(this.settings.apiKey || '').trim()) {
+      new Notice('Kavel: editing needs an API key. Add one in Settings → Kavel; generating new images works without one.', 8000);
+      return;
+    }
     new PromptModal(this.app, { title: `Kavel: edit ${file.name}`, placeholder: 'make the sky a warm sunset; keep everything else unchanged', withRatio: false }, async (instruction) => {
       const notice = new Notice('Kavel: uploading…', 0);
       try {

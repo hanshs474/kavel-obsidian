@@ -1,9 +1,9 @@
 {
   "id": "kavel-image-generator",
   "name": "Kavel AI Image Generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minAppVersion": "1.4.0",
-  "description": "Generate images into your notes and edit vault images with one sentence. Works without an API key.",
+  "description": "Generate images into your notes with no API key. Add a key to edit vault images with one sentence.",
   "author": "Kavel",
   "authorUrl": "https://www.kavel.ai",
   "isDesktopOnly": false
